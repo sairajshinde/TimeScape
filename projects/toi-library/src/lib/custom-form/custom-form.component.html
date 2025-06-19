@@ -1,0 +1,47 @@
+<div class="custom-form-wrapper rounded-lg custom-shadow">
+  <form [formGroup]="formGroup" class="form-layout">
+    <div
+      class="field-container"
+      *ngFor="let field of config.fields; let i = index"
+      [ngStyle]="{ 'grid-column': 'span ' + (config.columns || 1) }"
+    >
+      <label *ngIf="field.title">
+        {{ field.title }}<span *ngIf="field.required" class="required-asterisk">*</span>
+      </label>
+
+      <div class="input-icon-wrapper">
+        <i *ngIf="field.icon" class="input-icon" [class]="field.icon"></i>
+
+        <input
+          pInputText
+          [type]="field.inputType"
+          [formControlName]="'field' + i"
+          [placeholder]="field.placeholder"
+          [attr.minlength]="field.minlength"
+          [attr.maxlength]="field.maxlength"
+          [attr.pattern]="field.regex"
+          [ngClass]="['input-with-icon', field.cssClass]"
+          [ngStyle]="{
+            'background-color': field.backgroundcolor || 'white',
+            'color': field.color || 'black'
+          }"
+        />
+      </div>
+
+      <div *ngIf="formGroup.get('field' + i)?.invalid && formGroup.get('field' + i)?.touched" class="error">
+        <small *ngIf="formGroup.get('field' + i)?.errors?.['required']">
+          {{ field.title || 'This field' }} is required
+        </small>
+        <small *ngIf="formGroup.get('field' + i)?.errors?.['minlength']">
+          Min length: {{ field.minlength }}
+        </small>
+        <small *ngIf="formGroup.get('field' + i)?.errors?.['maxlength']">
+          Max length: {{ field.maxlength }}
+        </small>
+        <small *ngIf="formGroup.get('field' + i)?.errors?.['pattern']">
+          {{ field.patternMessage || 'Invalid format' }}
+        </small>
+      </div>
+    </div>
+  </form>
+</div>

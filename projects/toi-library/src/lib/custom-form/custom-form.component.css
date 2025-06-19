@@ -1,0 +1,74 @@
+.custom-form-wrapper {
+  max-width:100%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.form-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}  
+
+label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  color: #6b7280;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.input-with-icon {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 2.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.medium-width {
+  width: 60%;
+}
+
+.rounded-lg {
+  border-radius: 12px;
+}
+
+.custom-shadow {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error small {
+  color: red;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.required-asterisk {
+  color: red;
+  margin-left: 0.25rem;
+}

@@ -1,0 +1,18 @@
+<form [formGroup]="form" class="p-4 max-w-md">
+  <mat-form-field  class="w-full">
+    <mat-label>PAN Number</mat-label>
+
+    <input matInput
+           formControlName="pan"
+           panValidator
+           placeholder="Enter PAN" />
+
+    <mat-error *ngIf="form.get('pan')?.hasError('required') && form.get('pan')?.touched">
+      PAN is required
+    </mat-error>
+
+    <mat-error *ngIf="form.get('pan')?.hasError('invalidPan') && form.get('pan')?.touched">
+      Invalid PAN format (e.g. ABCD1234E)
+    </mat-error>
+  </mat-form-field>
+</form>
